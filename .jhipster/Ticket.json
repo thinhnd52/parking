@@ -1,0 +1,84 @@
+{
+  "annotations": {
+    "changelogDate": "20241028080923"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "ticketNo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "room",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "arrivalDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "departureDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "model",
+      "fieldType": "CarBrand",
+      "fieldValues": "ACURA,AUDI,BMW,BUICK,CADDY,CHEVY,CHRYSLER,CORVETTE,DODGE,FORD,GMC,HONDA,HYUNDAI,INFINITI,JAGUAR,JEEP,KIA,LEXUS,LINCOLN,MAZDA,MERCURY,M_BENZ,MITSUBISHI,NISSAN,OLDSMOBILE,PLYMOUTH,PONTIAC,PORSCHE,SAAB,SATURN,SUBARU,SUZUKI,TOYOTA,VOLKSWAGEN,VOLVO"
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "Color",
+      "fieldValues": "BLACK,BLUE,BROWN,GOLD,GREEN,GREY,ORANGE,PINK,PURPLE,RED,SILVER,WHITE,YELLOW"
+    },
+    {
+      "fieldName": "licensePlate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "AT_PORT,CHECKED_OUT,PARKED,WILL_COME_BACK,TEMP_ON_STREET"
+    },
+    {
+      "fieldName": "damanged",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Ticket",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "spot",
+      "relationshipName": "spot",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "driver",
+      "relationshipName": "driver",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

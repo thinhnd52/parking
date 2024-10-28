@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20241028080925"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "licenseNo",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Driver",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

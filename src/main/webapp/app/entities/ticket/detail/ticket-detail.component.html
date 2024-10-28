@@ -1,0 +1,163 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (ticket(); as ticketRef) {
+      <div>
+        <h2 data-cy="ticketDetailsHeading"><span>Ticket</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ ticketRef.id }}</span>
+          </dd>
+          <dt><span>Ticket No</span></dt>
+          <dd>
+            <span>{{ ticketRef.ticketNo }}</span>
+          </dd>
+          <dt><span>Last Name</span></dt>
+          <dd>
+            <span>{{ ticketRef.lastName }}</span>
+          </dd>
+          <dt><span>First Name</span></dt>
+          <dd>
+            <span>{{ ticketRef.firstName }}</span>
+          </dd>
+          <dt><span>Phone</span></dt>
+          <dd>
+            <span>{{ ticketRef.phone }}</span>
+          </dd>
+          <dt><span>Room</span></dt>
+          <dd>
+            <span>{{ ticketRef.room }}</span>
+          </dd>
+          <dt><span>Arrival Date</span></dt>
+          <dd>
+            <span>{{ ticketRef.arrivalDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Departure Date</span></dt>
+          <dd>
+            <span>{{ ticketRef.departureDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Model</span></dt>
+          <dd>
+            <span>{{
+              {
+                null: '',
+                ACURA: 'ACURA',
+                AUDI: 'AUDI',
+                BMW: 'BMW',
+                BUICK: 'BUICK',
+                CADDY: 'CADDY',
+                CHEVY: 'CHEVY',
+                CHRYSLER: 'CHRYSLER',
+                CORVETTE: 'CORVETTE',
+                DODGE: 'DODGE',
+                FORD: 'FORD',
+                GMC: 'GMC',
+                HONDA: 'HONDA',
+                HYUNDAI: 'HYUNDAI',
+                INFINITI: 'INFINITI',
+                JAGUAR: 'JAGUAR',
+                JEEP: 'JEEP',
+                KIA: 'KIA',
+                LEXUS: 'LEXUS',
+                LINCOLN: 'LINCOLN',
+                MAZDA: 'MAZDA',
+                MERCURY: 'MERCURY',
+                M_BENZ: 'M_BENZ',
+                MITSUBISHI: 'MITSUBISHI',
+                NISSAN: 'NISSAN',
+                OLDSMOBILE: 'OLDSMOBILE',
+                PLYMOUTH: 'PLYMOUTH',
+                PONTIAC: 'PONTIAC',
+                PORSCHE: 'PORSCHE',
+                SAAB: 'SAAB',
+                SATURN: 'SATURN',
+                SUBARU: 'SUBARU',
+                SUZUKI: 'SUZUKI',
+                TOYOTA: 'TOYOTA',
+                VOLKSWAGEN: 'VOLKSWAGEN',
+                VOLVO: 'VOLVO',
+              }[ticketRef.model ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>Color</span></dt>
+          <dd>
+            <span>{{
+              {
+                null: '',
+                BLACK: 'BLACK',
+                BLUE: 'BLUE',
+                BROWN: 'BROWN',
+                GOLD: 'GOLD',
+                GREEN: 'GREEN',
+                GREY: 'GREY',
+                ORANGE: 'ORANGE',
+                PINK: 'PINK',
+                PURPLE: 'PURPLE',
+                RED: 'RED',
+                SILVER: 'SILVER',
+                WHITE: 'WHITE',
+                YELLOW: 'YELLOW',
+              }[ticketRef.color ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>License Plate</span></dt>
+          <dd>
+            <span>{{ ticketRef.licensePlate }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{
+              {
+                null: '',
+                AT_PORT: 'AT_PORT',
+                CHECKED_OUT: 'CHECKED_OUT',
+                PARKED: 'PARKED',
+                WILL_COME_BACK: 'WILL_COME_BACK',
+                TEMP_ON_STREET: 'TEMP_ON_STREET',
+              }[ticketRef.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>Damanged</span></dt>
+          <dd>
+            <span>{{ ticketRef.damanged }}</span>
+          </dd>
+          <dt><span>Note</span></dt>
+          <dd>
+            <span>{{ ticketRef.note }}</span>
+          </dd>
+          <dt><span>Spot</span></dt>
+          <dd>
+            @if (ticket()!.spot) {
+              <div>
+                <a [routerLink]="['/spot', ticket()!.spot?.id, 'view']">{{ ticketRef.spot?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Driver</span></dt>
+          <dd>
+            @if (ticket()!.driver) {
+              <div>
+                <a [routerLink]="['/driver', ticket()!.driver?.id, 'view']">{{ ticketRef.driver?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/ticket', ticketRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

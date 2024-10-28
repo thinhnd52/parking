@@ -1,0 +1,42 @@
+package com.app.parking.domain.enumeration;
+
+/**
+ * The CarBrand enumeration.
+ */
+public enum CarBrand {
+    ACURA,
+    AUDI,
+    BMW,
+    BUICK,
+    CADDY,
+    CHEVY,
+    CHRYSLER,
+    CORVETTE,
+    DODGE,
+    FORD,
+    GMC,
+    HONDA,
+    HYUNDAI,
+    INFINITI,
+    JAGUAR,
+    JEEP,
+    KIA,
+    LEXUS,
+    LINCOLN,
+    MAZDA,
+    MERCURY,
+    M_BENZ,
+    MITSUBISHI,
+    NISSAN,
+    OLDSMOBILE,
+    PLYMOUTH,
+    PONTIAC,
+    PORSCHE,
+    SAAB,
+    SATURN,
+    SUBARU,
+    SUZUKI,
+    TOYOTA,
+    VOLKSWAGEN,
+    VOLVO,
+}

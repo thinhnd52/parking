@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20241028080924"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "spotNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "level",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "spotRow",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "spotColumn",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "occupied",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Spot",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

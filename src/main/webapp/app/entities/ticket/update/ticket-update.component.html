@@ -1,0 +1,263 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-ticket-heading" data-cy="TicketCreateUpdateHeading">Create or edit a Ticket</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let ticketNoRef = editForm.get('ticketNo')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_ticketNo">Ticket No</label>
+          <input type="text" class="form-control" name="ticketNo" id="field_ticketNo" data-cy="ticketNo" formControlName="ticketNo" />
+          @if (ticketNoRef.invalid && (ticketNoRef.dirty || ticketNoRef.touched)) {
+            <div>
+              @if (editForm.get('ticketNo')?.errors?.required) {
+                <small class="form-text text-danger">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let lastNameRef = editForm.get('lastName')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+          @if (lastNameRef.invalid && (lastNameRef.dirty || lastNameRef.touched)) {
+            <div>
+              @if (editForm.get('lastName')?.errors?.required) {
+                <small class="form-text text-danger">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+        </div>
+
+        @let phoneRef = editForm.get('phone')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_phone">Phone</label>
+          <input type="text" class="form-control" name="phone" id="field_phone" data-cy="phone" formControlName="phone" />
+          @if (phoneRef.invalid && (phoneRef.dirty || phoneRef.touched)) {
+            <div>
+              @if (editForm.get('phone')?.errors?.required) {
+                <small class="form-text text-danger">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_room">Room</label>
+          <input type="text" class="form-control" name="room" id="field_room" data-cy="room" formControlName="room" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_arrivalDate">Arrival Date</label>
+          <div class="d-flex">
+            <input
+              id="field_arrivalDate"
+              data-cy="arrivalDate"
+              type="datetime-local"
+              class="form-control"
+              name="arrivalDate"
+              formControlName="arrivalDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_departureDate">Departure Date</label>
+          <div class="d-flex">
+            <input
+              id="field_departureDate"
+              data-cy="departureDate"
+              type="datetime-local"
+              class="form-control"
+              name="departureDate"
+              formControlName="departureDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_model">Model</label>
+          <select class="form-control" name="model" formControlName="model" id="field_model" data-cy="model">
+            <option [ngValue]="null"></option>
+            @for (carBrand of carBrandValues; track $index) {
+              <option [value]="carBrand">
+                {{
+                  {
+                    null: '',
+                    ACURA: 'ACURA',
+                    AUDI: 'AUDI',
+                    BMW: 'BMW',
+                    BUICK: 'BUICK',
+                    CADDY: 'CADDY',
+                    CHEVY: 'CHEVY',
+                    CHRYSLER: 'CHRYSLER',
+                    CORVETTE: 'CORVETTE',
+                    DODGE: 'DODGE',
+                    FORD: 'FORD',
+                    GMC: 'GMC',
+                    HONDA: 'HONDA',
+                    HYUNDAI: 'HYUNDAI',
+                    INFINITI: 'INFINITI',
+                    JAGUAR: 'JAGUAR',
+                    JEEP: 'JEEP',
+                    KIA: 'KIA',
+                    LEXUS: 'LEXUS',
+                    LINCOLN: 'LINCOLN',
+                    MAZDA: 'MAZDA',
+                    MERCURY: 'MERCURY',
+                    M_BENZ: 'M_BENZ',
+                    MITSUBISHI: 'MITSUBISHI',
+                    NISSAN: 'NISSAN',
+                    OLDSMOBILE: 'OLDSMOBILE',
+                    PLYMOUTH: 'PLYMOUTH',
+                    PONTIAC: 'PONTIAC',
+                    PORSCHE: 'PORSCHE',
+                    SAAB: 'SAAB',
+                    SATURN: 'SATURN',
+                    SUBARU: 'SUBARU',
+                    SUZUKI: 'SUZUKI',
+                    TOYOTA: 'TOYOTA',
+                    VOLKSWAGEN: 'VOLKSWAGEN',
+                    VOLVO: 'VOLVO',
+                  }[carBrand]
+                }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_color">Color</label>
+          <select class="form-control" name="color" formControlName="color" id="field_color" data-cy="color">
+            <option [ngValue]="null"></option>
+            @for (color of colorValues; track $index) {
+              <option [value]="color">
+                {{
+                  {
+                    null: '',
+                    BLACK: 'BLACK',
+                    BLUE: 'BLUE',
+                    BROWN: 'BROWN',
+                    GOLD: 'GOLD',
+                    GREEN: 'GREEN',
+                    GREY: 'GREY',
+                    ORANGE: 'ORANGE',
+                    PINK: 'PINK',
+                    PURPLE: 'PURPLE',
+                    RED: 'RED',
+                    SILVER: 'SILVER',
+                    WHITE: 'WHITE',
+                    YELLOW: 'YELLOW',
+                  }[color]
+                }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_licensePlate">License Plate</label>
+          <input
+            type="text"
+            class="form-control"
+            name="licensePlate"
+            id="field_licensePlate"
+            data-cy="licensePlate"
+            formControlName="licensePlate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null"></option>
+            @for (status of statusValues; track $index) {
+              <option [value]="status">
+                {{
+                  {
+                    null: '',
+                    AT_PORT: 'AT_PORT',
+                    CHECKED_OUT: 'CHECKED_OUT',
+                    PARKED: 'PARKED',
+                    WILL_COME_BACK: 'WILL_COME_BACK',
+                    TEMP_ON_STREET: 'TEMP_ON_STREET',
+                  }[status]
+                }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_damanged">Damanged</label>
+          <input type="checkbox" class="form-check" name="damanged" id="field_damanged" data-cy="damanged" formControlName="damanged" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_note">Note</label>
+          <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_spot">Spot</label>
+          <select class="form-control" id="field_spot" data-cy="spot" name="spot" formControlName="spot" [compareWith]="compareSpot">
+            <option [ngValue]="null"></option>
+            @for (spotOption of spotsCollection; track $index) {
+              <option [ngValue]="spotOption">{{ spotOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_driver">Driver</label>
+          <select
+            class="form-control"
+            id="field_driver"
+            data-cy="driver"
+            name="driver"
+            formControlName="driver"
+            [compareWith]="compareDriver"
+          >
+            <option [ngValue]="null"></option>
+            @for (driverOption of driversCollection; track $index) {
+              <option [ngValue]="driverOption">{{ driverOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

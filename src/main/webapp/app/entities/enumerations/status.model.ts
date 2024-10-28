@@ -1,0 +1,11 @@
+export enum Status {
+  AT_PORT = 'AT_PORT',
+
+  CHECKED_OUT = 'CHECKED_OUT',
+
+  PARKED = 'PARKED',
+
+  WILL_COME_BACK = 'WILL_COME_BACK',
+
+  TEMP_ON_STREET = 'TEMP_ON_STREET',
+}
