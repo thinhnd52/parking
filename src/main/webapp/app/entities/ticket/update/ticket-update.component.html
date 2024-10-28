@@ -72,7 +72,8 @@
           <div class="col-md-3">
             <div class="mb-3">
               <label class="form-label" for="field_room">Room</label>
-              <input type="text" class="form-control" name="room" id="field_room" data-cy="room" formControlName="room"/>
+              <input type="text" class="form-control" name="room" id="field_room" data-cy="room"
+                     formControlName="room"/>
             </div>
           </div>
           <div class="col-md-3">
@@ -226,49 +227,54 @@
               </select>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="mb-3">
-              <label class="form-label" for="field_damanged">Damanged</label>
-              <input type="checkbox" class="form-check" name="damanged" id="field_damanged" data-cy="damanged"
-                     formControlName="damanged"/>
-            </div>
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="field_spot">Spot</label>
+            <select class="form-control" id="field_spot" data-cy="spot" name="spot" formControlName="spot"
+                    [compareWith]="compareSpot">
+              <option [ngValue]="null"></option>
+              @for (spotOption of spotsCollection; track $index) {
+                <option [ngValue]="spotOption">{{ spotOption.name }}</option>
+              }
+            </select>
           </div>
         </div>
 
         <div class="row">
-        <div class="col-md-3 mb-3">
-          <label class="form-label" for="field_note">Note</label>
-          <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note"/>
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="field_driver">Driver</label>
+            <select
+              class="form-control"
+              id="field_driver"
+              data-cy="driver"
+              name="driver"
+              formControlName="driver"
+              [compareWith]="compareDriver"
+            >
+              <option [ngValue]="null"></option>
+              @for (driverOption of driversCollection; track $index) {
+                <option [ngValue]="driverOption">{{ driverOption.lastName }}</option>
+              }
+            </select>
+          </div>
         </div>
 
-        <div class="col-md-3 mb-3">
-          <label class="form-label" for="field_spot">Spot</label>
-          <select class="form-control" id="field_spot" data-cy="spot" name="spot" formControlName="spot"
-                  [compareWith]="compareSpot">
-            <option [ngValue]="null"></option>
-            @for (spotOption of spotsCollection; track $index) {
-              <option [ngValue]="spotOption">{{ spotOption.id }}</option>
-            }
-          </select>
-        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="field_damanged">Damanged</label>
+            <input type="checkbox" class="form-check" name="damanged" id="field_damanged" data-cy="damanged"
+                   formControlName="damanged"/>
+          </div>
 
-        <div class="col-md-3 mb-3">
-          <label class="form-label" for="field_driver">Driver</label>
-          <select
-            class="form-control"
-            id="field_driver"
-            data-cy="driver"
-            name="driver"
-            formControlName="driver"
-            [compareWith]="compareDriver"
-          >
-            <option [ngValue]="null"></option>
-            @for (driverOption of driversCollection; track $index) {
-              <option [ngValue]="driverOption">{{ driverOption.id }}</option>
-            }
-          </select>
+          <div class="col-md-3 mb-3">
+            <label class="form-label" for="field_note">Note</label>
+            <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note"/>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+            <input class="form-control" type="file" id="formFileMultiple" multiple>
+          </div>
         </div>
-      </div>
       </div>
 
       <div>
